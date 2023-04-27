@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  agencia-micro-cliente:
+    container_name: agencia-micro-cliente
+    image: agencia-micro-cliente
+    restart: always
+    volumes: 
+      - $HOME/.m2:/root/.m2
+    build:
+      context: ./agencia-micro-cliente
+      dockerfile: ./src/main/docker/Dockerfile.jvm
+    ports:
+      - 8181:8181
+  agencia-micro-reserva:
+    container_name: agencia-micro-reserva
+    image: agencia-micro-reserva
+    restart: always
+    volumes: 
+      - $HOME/.m2:/root/.m2
+    build:
+      context: ./agencia-micro-reserva
+      dockerfile: ./src/main/docker/Dockerfile.jvm
+    ports:
+      - 8182:8182
